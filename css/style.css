@@ -398,7 +398,7 @@ div.desc { padding: 15px; text-align: center;}
 	p {line-height: 1.5}
 	.intro h2 {font-size: 20px;}
 
-	header nav ul > li { font-size: 14px;border: 1px outset ;display: inline-block;text-align: center; padding: 10px;}
+	header nav ul > li { font-size: 15px;font-weight: bold; border: 1px outset ;display: inline-block;text-align: center; padding: 10px; background-color:white;}
 	
 
 	.contact-form-wrapper {
