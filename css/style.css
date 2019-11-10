@@ -198,7 +198,7 @@ div.desc { padding: 15px; text-align: center;}
 .photos {
 	margin: 5vw;
 	display: flex;
-	flex-wrap: wrap;	
+	flex-wrap: wrap;
 }
 
 .responsive {
@@ -211,6 +211,32 @@ div.desc { padding: 15px; text-align: center;}
 	clear: both;
   }
 
+  .btn {
+	border: 2px solid #f8524e;
+	outline: none;
+	color:#454545;
+	background-color: inherit;
+	padding: 12px 20px;
+	font-size: 15px;
+	cursor: pointer;
+	display: inline-block;
+  }
+  
+  /* On mouse-over */
+  .btn:hover {color:black; background: #f8524e;}
+
+  .filterDiv {
+	display: none; /* Hidden by default */
+  }
+  .show {
+	display: block;
+  }
+  .btn.active {
+	border: none;
+	color:#454545;
+	font-weight: bold;
+  }
+  #myBtnContainer{ margin: 5vw;}
 
 
 /*===== Contact ===*/
