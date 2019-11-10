@@ -71,9 +71,15 @@
             <p> In my free time, I love to <span>travel</span> and go to <span>art museums and galleries</span>.</p>
           </div>
 
+  <div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class = "btn" onclick="filterSelection('asia')">Asia</button>
+    <button class = "btn" onclick="filterSelection('euro')">Europe</button>
+  </div>
+
 <div class = "photos"> 
 <div class="responsive">
-  <div class="gallery">
+  <div class="gallery filterDiv">
     <a target="_blank" href="images/about-images/1.jpg">
       <img src="images/about-images/1.jpg" alt="Project Heidelberg" width="600" height="400">
     </a>
@@ -82,7 +88,7 @@
 </div>
 
 <div class="responsive">
-  <div class="gallery">
+  <div class="gallery filterDiv">
     <a target="_blank" href="images/about-images/2.JPG">
       <img src="images/about-images/2.JPG" alt="The Pyramids" width="600" height="400">
     </a>
@@ -91,7 +97,7 @@
 </div>
 
 <div class="responsive">
-  <div class="gallery">
+  <div class="gallery filterDiv asia">
     <a target="_blank" href="images/about-images/3.JPG">
       <img src="images/about-images/3.JPG" alt="Fragrant Hill Hotel" width="600" height="400">
     </a>
@@ -100,7 +106,7 @@
 </div>
 
 <div class="responsive">
-  <div class="gallery">
+  <div class="gallery filterDiv">
     <a target="_blank" href="images/about-images/4.JPG">
       <img src="images/about-images/4.JPG" alt="the Red Sea" width="600" height="400">
     </a>
@@ -109,7 +115,7 @@
 </div>
 
 <div class="responsive">
-  <div class="gallery">
+  <div class="gallery filterDiv euro">
     <a target="_blank" href="images/about-images/5.JPG">
       <img src="images/about-images/5.JPG" alt="grand mosque of paris" width="600" height="400">
     </a>
@@ -118,7 +124,7 @@
 </div>
 
 <div class="responsive">
-  <div class="gallery">
+  <div class="gallery filterDiv euro">
     <a target="_blank" href="images/about-images/6.JPG">
       <img src="images/about-images/6.JPG" alt="Vaux-le-Vicomte" width="600" height="400">
     </a>
@@ -127,7 +133,7 @@
 </div>
 
 <div class="responsive">
-    <div class="gallery">
+    <div class="gallery filterDiv">
         <a target="_blank" href="images/about-images/7.jpg">
         <img src="images/about-images/7.jpg" alt="Chichen Itza" width="600" height="400">
         </a>
@@ -136,16 +142,16 @@
 </div>
 
 <div class="responsive">
-        <div class="gallery">
+        <div class="gallery filterDiv euro">
             <a target="_blank" href="images/about-images/8.jpg">
-            <img src="images/about-images/8.jpg" alt="Barcelone" width="600" height="400">
+            <img src="images/about-images/8.jpg" alt="Barcelona" width="600" height="400">
             </a>
             <div class="desc">Barcelona, Spain</div>
         </div>
     </div>
 
     <div class="responsive">
-            <div class="gallery">
+            <div class="gallery filterDiv asia">
                 <a target="_blank" href="images/about-images/9.JPG">
                 <img src="images/about-images/9.JPG" alt="Pamukkale" width="600" height="400">
                 </a>
@@ -202,5 +208,55 @@
     <!-- footer -->
     
   </div>
+
+  <script>
+        filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+
+    // Show filtered elements
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+
+    // Hide elements that are not selected
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current control button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
   </body>
 </html>
